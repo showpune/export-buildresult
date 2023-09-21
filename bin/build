@@ -3,4 +3,5 @@ set -eo pipefail
 
 echo "---> Copy workspace to mount buildpack"
 
-cp /workspace /buildresult
+
+tar -cvf /tmp/result.tar /workspace

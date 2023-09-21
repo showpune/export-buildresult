@@ -4,6 +4,7 @@ set -eo pipefail
 # 1. GET ARGS
 plan_path=$2
 
+echo "${plan_path}"
 # 3. DECLARE DEPENDENCIES
 cat >> "${plan_path}" <<EOL
 # Buildpack provides this dependency
@@ -12,13 +13,15 @@ cat >> "${plan_path}" <<EOL
 #
 [[provides]]
 name = "export-buildresult"
-
 # Buildpack requires this dependency
 #
 # NOTE: Everything aside from 'name' is simply additional information that the providing buildpack can use to resolve
 #       the dependency.
 #
 [[requires]]
+name = "maven-build-only"
+
+[[requires]]
 name = "export-buildresult"
-name = "build-only"
+
 EOL
